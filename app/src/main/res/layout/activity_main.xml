@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray"
+        android:elevation="12.5dp"
+        tools:context=".MainActivity">
+
+        <ImageButton
+            android:id="@+id/button_false"
+            style="@style/buttonStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_prev"
+            app:layout_constraintEnd_toStartOf="@+id/button_true"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:srcCompat="@drawable/incorrect" />
+
+        <ImageButton
+            android:id="@+id/button_true"
+            style="@style/buttonStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_false"
+            app:layout_constraintTop_toTopOf="@id/button_false"
+            app:srcCompat="@drawable/correct" />
+
+        <TextView
+            android:id="@+id/q_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poiret_one"
+            android:text="5"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintEnd_toStartOf="@+id/q_total"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/q_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poiret_one"
+            android:text="1000"
+            android:textColor="@color/white"
+            android:textSize="17.5sp"
+            app:layout_constraintBottom_toBottomOf="@+id/q_num"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/q_num" />
+
+        <ImageButton
+            android:id="@+id/button_prev"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_next"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_false"
+            app:srcCompat="@drawable/back" />
+
+        <ImageButton
+            android:id="@+id/button_next"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_prev"
+            app:layout_constraintTop_toBottomOf="@+id/button_true"
+            app:srcCompat="@drawable/next" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:elevation="12.5dp"
+            app:cardBackgroundColor="@color/teal_700"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="12.5dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/q_num">
+
+            <TextView
+                android:id="@+id/q_statement"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/google_sans"
+                android:padding="10dp"
+                android:text="questionStatement"
+                android:textColor="@color/gray"
+                android:textSize="17.5sp" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
