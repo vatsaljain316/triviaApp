@@ -14,35 +14,39 @@
         android:elevation="12.5dp"
         tools:context=".MainActivity">
 
-        <ImageButton
-            android:id="@+id/button_false"
-            style="@style/buttonStyle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_prev"
-            app:layout_constraintEnd_toStartOf="@+id/button_true"
+        <Button
+            android:id="@+id/button_true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_700"
+            android:fontFamily="@font/google_sans"
+            android:text="True"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_false"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            app:srcCompat="@drawable/incorrect" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-        <ImageButton
-            android:id="@+id/button_true"
-            style="@style/buttonStyle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <Button
+            android:id="@+id/button_false"
+            android:textColor="@color/gray"
+            android:backgroundTint="@color/teal_700"
+            android:fontFamily="@font/google_sans"
+            android:text="False"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button_false"
-            app:layout_constraintTop_toTopOf="@id/button_false"
-            app:srcCompat="@drawable/correct" />
+            app:layout_constraintStart_toEndOf="@+id/button_true"
+            app:layout_constraintTop_toTopOf="@id/button_true" />
 
         <TextView
             android:id="@+id/q_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poiret_one"
-            android:text="5"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/cardView"
@@ -56,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poiret_one"
-            android:text="1000"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="17.5sp"
             app:layout_constraintBottom_toBottomOf="@+id/q_num"
@@ -64,48 +68,20 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/q_num" />
 
-        <ImageButton
-            android:id="@+id/button_prev"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@null"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_next"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_false"
-            app:srcCompat="@drawable/back" />
-
-        <ImageButton
-            android:id="@+id/button_next"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@null"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button_prev"
-            app:layout_constraintTop_toBottomOf="@+id/button_true"
-            app:srcCompat="@drawable/next" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
             android:elevation="12.5dp"
             app:cardBackgroundColor="@color/teal_700"
             app:cardCornerRadius="10dp"
             app:cardElevation="12.5dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/q_num">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/q_statement"
@@ -113,10 +89,24 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/google_sans"
                 android:padding="10dp"
-                android:text="questionStatement"
                 android:textColor="@color/gray"
                 android:textSize="17.5sp" />
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/poiret_one"
+            android:text="Score : "
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@+id/q_num"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
