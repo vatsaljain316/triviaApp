@@ -7,16 +7,8 @@ import android.content.SharedPreferences;
 import android.example.triviaapp.databinding.ActivityMainBinding;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -25,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String MESSAGE_ID = "savedData";
     private ActivityMainBinding binding;
     private ArrayList<Question> questionArrayList;
-    private int currentIndex = 0;
+    private int currentIndex;
     private int score;
+    private static final String score_text = "Score : ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +32,12 @@ public class MainActivity extends AppCompatActivity {
         currentIndex = getData.getInt("currentIndex", 0);
         score = getData.getInt("score", 0);
 
-
         questionArrayList = new Repository().getQuestionBank(questionBank -> {
             Question question = questionBank.get(currentIndex);
             binding.qStatement.setText(question.getStatement());
-            binding.qTotal.setText("" + questionBank.size());
-            binding.qNum.setText("" + (currentIndex + 1));
-            binding.textScore.setText("Score : " + score);
+            binding.qTotal.setText(String.valueOf(questionBank.size()));
+            binding.qNum.setText(String.valueOf(currentIndex + 1));
+            binding.textScore.setText(score_text.concat(String.valueOf(score)));
         });
 
         binding.buttonFalse.setOnClickListener(view -> {
@@ -61,25 +53,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkAnswer(boolean answer) {
         boolean verdict = questionArrayList.get(currentIndex).getVerdict();
-        String message;
         if(answer == verdict) {
-            message = "Correct";
             score++;
             shakeAnimation(true);
         } else {
-            message = "Incorrect";
             shakeAnimation(false);
         }
-
-//        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void updateQuestion() {
         currentIndex = (currentIndex + 1) % questionArrayList.size();
         Question question = questionArrayList.get(currentIndex);
         binding.qStatement.setText(question.getStatement());
-        binding.qNum.setText("" + (currentIndex + 1));
-        binding.textScore.setText("Score : " + score);
+        binding.qNum.setText(String.valueOf(currentIndex + 1));
+        binding.textScore.setText(score_text.concat(String.valueOf(score)));
         SharedPreferences sharedPreferences = getSharedPreferences(MESSAGE_ID, 0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
