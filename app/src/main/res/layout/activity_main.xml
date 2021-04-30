@@ -34,19 +34,17 @@
 
         <TextView
             android:id="@+id/q_num"
+            style="@style/text_style"
             android:textSize="30sp"
-            android:text=""
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/cardView"
             app:layout_constraintEnd_toStartOf="@+id/q_total"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/text_style" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/q_total"
             style="@style/text_style"
-            android:text=""
             android:textSize="17.5sp"
             app:layout_constraintBottom_toBottomOf="@+id/q_num"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +70,6 @@
                 android:id="@+id/q_statement"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text=""
                 android:fontFamily="@font/google_sans"
                 android:padding="10dp"
                 android:textColor="@color/gray"
